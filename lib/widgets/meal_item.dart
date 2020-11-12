@@ -17,7 +17,8 @@ class MealItem extends StatelessWidget {
       @required this.imageUrl,
       @required this.duration,
       @required this.complexity,
-      @required this.affordability});
+      @required this.affordability,
+     });
 
   String get complexityText {
     // instead of if
@@ -54,9 +55,16 @@ class MealItem extends StatelessWidget {
 
   void selectMeal(BuildContext context) {
     Navigator.of(context).pushNamed(
+      // Page is pushed, when the page is poped THEN result happens
       MealDetailScreen.routeName,
       arguments: id,
-    );
+      // Pass around data with pop and retrieve it with then method.
+      // Then-method doesn't run when you are done pushing but when you the page you pushed to is popped
+    ).then((result) {
+      if (result != null) {
+        // removeItem(result);
+      }
+    });
   }
 
   @override

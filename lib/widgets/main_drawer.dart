@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/settings_screen.dart';
+import '../screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -43,10 +43,11 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed('/');
+            // Replace pages so it doesn't stack up. No back button
+            Navigator.of(context).pushReplacementNamed('/');
           }),
-          buildListTile('Settings', Icons.settings, () {
-            Navigator.of(context).pushNamed(SettingsScreen.routeName);
+          buildListTile('Filters', Icons.settings, () {
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
           }),
         ],
       ),
